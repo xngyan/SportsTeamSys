@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f7fa;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Element Plus 自定义样式 */
+:deep(.el-dialog) {
+  border-radius: 8px;
+}
+
+:deep(.el-card) {
+  border-radius: 8px;
+  border: 1px solid #ebeef5;
+}
+
+:deep(.el-button) {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+:deep(.el-button--primary) {
+  background: #667eea;
+  border-color: #667eea;
+}
+
+:deep(.el-button--primary:hover) {
+  background: #5568d3;
+  border-color: #5568d3;
+}
+
+:deep(.el-input__wrapper) {
+  border-radius: 4px;
+}
+
+:deep(.el-select-dropdown) {
+  border-radius: 4px;
+}
+
+:deep(.el-table) {
+  border-radius: 8px;
+}
+
+:deep(.el-pagination__options) {
+  color: #606266;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  :deep(.el-header) {
+    height: auto;
+    padding: 10px;
+  }
+
+  :deep(.el-main) {
+    padding: 10px;
+  }
+}

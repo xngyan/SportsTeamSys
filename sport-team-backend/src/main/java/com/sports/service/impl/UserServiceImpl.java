@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateProfile(Integer userId, String nickname, String phoneNum, String avatar, String gender, Integer level) throws Exception {
+    public void updateProfile(Integer userId, String nickname, String stuId, String phoneNum, String avatar, String gender, Integer level) throws Exception {
         User user = findById(userId);
         if (user == null) {
             throw new Exception("用户不存在");
@@ -77,6 +77,12 @@ public class UserServiceImpl implements UserService {
 
         if (nickname != null && !nickname.isEmpty()) {
             user.setUsername(nickname);
+        }
+        if (stuId != null && !stuId.isEmpty()) {
+            if (!stuId.equals(user.getStuId()) && userRepository.findByStuId(stuId).isPresent()) {
+                throw new Exception("学号已被使用");
+            }
+            user.setStuId(stuId);
         }
         if (phoneNum != null && !phoneNum.isEmpty()) {
             if (!phoneNum.equals(user.getPhoneNum()) && userRepository.findByPhoneNum(phoneNum).isPresent()) {

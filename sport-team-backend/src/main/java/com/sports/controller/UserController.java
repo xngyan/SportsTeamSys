@@ -1,6 +1,7 @@
 package com.sports.controller;
 
 import com.sports.dto.ApiResponse;
+import com.sports.dto.UpdateProfileRequest;
 import com.sports.dto.UserDTO;
 import com.sports.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,18 @@ public class UserController {
     @PutMapping("/profile")
     public ApiResponse<String> updateProfile(
         @RequestAttribute Integer userId,
-        @RequestParam(required = false) String nickname,
-        @RequestParam(required = false) String phoneNum,
-        @RequestParam(required = false) String avatar,
-        @RequestParam(required = false) String gender,
-        @RequestParam(required = false) Integer level
+        @RequestBody UpdateProfileRequest request
     ) {
         try {
-            userService.updateProfile(userId, nickname, phoneNum, avatar, gender, level);
+            userService.updateProfile(
+                userId, 
+                request.getNickname(), 
+                request.getStuId(),
+                request.getPhoneNum(), 
+                request.getAvatar(), 
+                request.getGender(), 
+                request.getLevel()
+            );
             return ApiResponse.success("个人信息更新成功");
         } catch (Exception e) {
             return ApiResponse.error(e.getMessage());

@@ -55,12 +55,18 @@
             <el-option label="其他" value="其他" />
           </el-select>
         </el-form-item>
-        <el-form-item label="赛点位置" prop="spotId">
-          <el-select v-model="newActivityForm.spotId" placeholder="选择赛点位置">
+        <el-form-item label="活动地点" prop="spotId">
+          <el-select v-model="newActivityForm.spotId" placeholder="选择活动地点">
             <el-option label="学校体育馆" :value="1" />
             <el-option label="足球场" :value="2" />
             <el-option label="羽毛球馆" :value="3" />
             <el-option label="游泳池" :value="4" />
+            <el-option label="乒乓球馆" :value="5" />
+            <el-option label="综合馆" :value="6" />
+            <el-option label="排球场" :value="7" />
+            <el-option label="田径场" :value="8" />
+            <el-option label="篮球场" :value="9" />
+            <el-option label="其他（见活动描述）" :value="10" />
           </el-select>
         </el-form-item>
         <el-form-item label="最多参加人数" prop="maxParticipants">
@@ -209,7 +215,7 @@ const newActivityForm = ref({
 const activityRules = {
   title: [{ required: true, message: '请输入组队标题', trigger: 'blur' }],
   sportType: [{ required: true, message: '请选择运动项目', trigger: 'change' }],
-  spotId: [{ required: true, message: '请选择赛点位置', trigger: 'change' }],
+  spotId: [{ required: true, message: '请选择活动地点', trigger: 'change' }],
   maxParticipants: [{ required: true, message: '请输入最多参加人数', trigger: 'blur' }],
   registrationDdl: [{ required: true, message: '请选择报名截止时间', trigger: 'change' }],
   startAt: [{ required: true, message: '请选择活动开始时间', trigger: 'change' }],

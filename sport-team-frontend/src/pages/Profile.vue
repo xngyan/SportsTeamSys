@@ -80,7 +80,7 @@
             </el-form-item>
 
             <el-form-item label="性别">
-              <span v-if="!editMode">{{ profile.gender || '未设置' }}</span>
+              <span v-if="!editMode">{{ formatGender(profile.gender) }}</span>
               <el-select v-else v-model="editForm.gender" placeholder="选择性别">
                 <el-option label="男" value="MALE" />
                 <el-option label="女" value="FEMALE" />
@@ -281,7 +281,20 @@ const loadStats = async () => {
   }
 }
 
+const formatGender = (gender) => {
+  const map = {
+    'MALE': '男',
+    'FEMALE': '女',
+    'OTHER': '其他'
+  }
+  return map[gender] || '未设置'
+}
+
 const saveProfile = async () => {
+  if (!/^[a-zA-Z_]+$/.test(editForm.value.nickname)) {
+    ElMessage.warning('用户名只能包含字母和下划线')
+    return
+  }
   try {
     await userAPI.updateProfile({
       nickname: editForm.value.nickname,
